@@ -46,7 +46,7 @@ const note = new Note({ // A new note object is created based on the model.
 
 
 //! The note object is saved to the database.
-// note.save().then(result => { // The note object is saved to the database.
-//     console.log(result, 'note saved!')
-//     mongoose.connection.close()
-// })
+note.save().then(result => { // The note object is saved to the database.
+    console.log(result, 'note saved!')
+    mongoose.connection.close()
+})
