@@ -1,11 +1,17 @@
+require('dotenv').config() // Import the dotenv library
 const express = require('express') // Import the Express.js library
 const app = express() // Create an instance of Express application
 // const cors = require('cors') // Import cors
+const mongoose = require('mongoose') // Import mongoose
+const Note = require('./models/note') // Import the Note model
+const password = process.argv[2]
+
+
 
 // app.use(express.json()) // Enable the use of JSON data in the request body
-
 // app.use(cors()) // Use cors to allow requests from other origins
 app.use(express.static('dist'))
+
 
 let notes = [
     {
@@ -30,7 +36,9 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/notes', (request, response) => {
-    response.json(notes) // Send the notes array as a JSON response
+    Note.find({}).then(result => {
+        response.json(result)
+    })
 })
 
 app.get('/api/notes/:id', (request, response) => { 
@@ -81,7 +89,7 @@ app.post('/api/notes', (request, response) => {
 
 
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
