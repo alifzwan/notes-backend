@@ -33,20 +33,20 @@ const note = new Note({ // A new note object is created based on the model.
 })
 
 //! Fetching objects(note) from the database
-// Note.find({}).then(result => { // The notes in the database are fetched.
-//     if (result.length > 0) { // Check if there are notes found
-//         result.forEach(note => { // The notes are logged to the console.
-//             console.log(note)
-//         })
-//     } else {
-//         console.log('No notes found!')
-//     }
-//     mongoose.connection.close() // The database connection is closed.
-// })
+Note.find({}).then(result => { // The notes in the database are fetched.
+    if (result.length > 0) { // Check if there are notes found
+        result.forEach(note => { // The notes are logged to the console.
+            console.log(note)
+        })
+    } else {
+        console.log('No notes found!')
+    }
+    mongoose.connection.close() // The database connection is closed.
+})
 
 
 //! The note object is saved to the database.
-note.save().then(result => { // The note object is saved to the database.
-    console.log(result, 'note saved!')
-    mongoose.connection.close()
-})
+// note.save().then(result => { // The note object is saved to the database.
+//     console.log(result, 'note saved!')
+//     mongoose.connection.close()
+// })
