@@ -2,7 +2,7 @@ import axios from 'axios'
 import App from '../App'
 
 
-const baseUrl = '/api/notes'
+const baseUrl = 'http://localhost:3001/notes'
 
 
 const getAll = () => {
