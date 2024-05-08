@@ -1,9 +1,11 @@
-const app = require('./app')
-const config = require('./utils/config')
-const logger = require('./utils/logger')
+require('dotenv').config() // The dotenv package is used to read environment variables from a .env file.
+
+const express = require('express')
+const cors = require('cors') 
+const Note = require('./models/note') 
+const app = express()
 
 
-<<<<<<< HEAD
 app.use(express.static('dist')) // The express.static middleware is used to serve static files from the dist directory.
 app.use(express.json()) // The express.json middleware is used to parse JSON payloads in the request body.
 app.use(cors()) // The cors middleware is used to allow requests from all origins.
@@ -130,8 +132,4 @@ app.use(errorHandler) // The errorHandler middleware is used to catch errors in 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
-=======
-app.listen(config.PORT, () => {
-    logger.info(`Server running on port ${config.PORT}`)
->>>>>>> da19d66fb4281c49af9451327b29db301b870e08
 })
